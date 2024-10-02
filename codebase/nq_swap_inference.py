@@ -125,13 +125,6 @@ def model_teacher_forcing_inference (model, tokenizer, input_df: pd.DataFrame, o
         batch_prompts = list(unique_input_ans['input'][i : i + batch_size])
         batch_teacher_ans = list(unique_input_ans['teacher_ans'][i : i + batch_size])
 
-        # '''Debugging START'''
-        # if EXAMPLE not in batch_prompts:
-        #     continue
-        # else:
-        #     import pdb; pdb.set_trace()
-        # '''Debugging END'''
-
         '''tokenized the batch'''
         tokenizer.padding_side = 'left'
         batch_tokenized_prompts = tokenizer(
@@ -173,15 +166,6 @@ def model_teacher_forcing_inference (model, tokenizer, input_df: pd.DataFrame, o
                 labels = labels,
                 output_attentions = True
                 )
-            # start, end = 0, input_ids.size(1)
-            # start, end = 20, 25
-            # position_ids = torch.arange(0, input_ids.size(1), dtype=torch.long, device=input_ids.device)
-            # position_ids = position_ids.unsqueeze(0).expand(input_ids.size(0), -1)
-
-            # outputs = model(input_ids = input_ids, attention_mask = attention_mask, labels=label, output_attentions = True, position_ids=position_ids)
-
-            # outputs = model(input_ids = input_ids[:, start: end], attention_mask = attention_mask[:, start: end], labels=label[:, start: end], output_attentions = True)
-            # outputs.logits
 
             logits = outputs.logits.to('cpu')
             ans_logits = logits[:, prompt_len - 1: ,:]
@@ -190,7 +174,6 @@ def model_teacher_forcing_inference (model, tokenizer, input_df: pd.DataFrame, o
             probs = F.softmax(ans_logits, dim=-1)# dimension of batch_size, time, vocab_size
 
             '''cache results'''
-            # DEBUGGING
             save_teacher_forcing_inference_to_pickle(filename=output_fname, batch_prompts=batch_prompts, teacher_ans=batch_teacher_ans,
                                                      teacher_ans_len=teacher_ans_len, labels=labels[:, prompt_len: ].to('cpu'),probs=probs)
         

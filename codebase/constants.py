@@ -1,5 +1,5 @@
 PREFIX_PROMPT = '''Instruction: In a few words, give a direct answer to the below question in an accurate and concise way.\n'''
-CACHE_ROOT = '/home/al2644/storage/knowledge_update'  # '/share/goyal/lio/knowledge_update'
+CACHE_ROOT = '/share/goyal/lio/knowledge_update'  # '/share/goyal/lio/knowledge_update'
 EXAMPLE = 'Instruction: In a few words, give a direct answer to the below question in an accurate and concise way.\nsource:  The Comanche / kəˈmæntʃiː / ( Comanche : Nʉmʉnʉʉ ) are a Native American nation from the Great Plains whose historic territory , known as Comancheria , consisted of present - day eastern New Mexico , southeastern Colorado , southwestern Kansas , western Oklahoma , and most of northwest Texas and northern Chihuahua . The Comanche people are federally recognized as the Comanche Nation , headquartered in Lawton , Oklahoma . \nquestion: what is the meaning of the name comanche\nanswer: '
 
 # EXAMPLE = 'Instruction: In a few words, give a direct answer to the below question in an accurate and concise way.\nsource:  An equilateral triangle is the most symmetrical triangle , having 3 lines of reflection and rotational symmetry of order 3 about its center . Its symmetry group is the dihedral group of order 6 D . \nquestion: how many lines of symmetry are there in a equilateral triangle\nanswer: '

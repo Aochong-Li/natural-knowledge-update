@@ -35,7 +35,7 @@ if __name__ == "__main__":
     with_context = False
     prefix_prompt = '''Instruction: answer the below question in an accurate, concise way.\n'''
 
-    input_df = load_dataset(type = dataset_type, dataset_name = dataset_name, with_context = with_context, prefix_prompt = prefix_prompt)
+    input_df = load_input_dataset(type = dataset_type, dataset_name = dataset_name, with_context = with_context, prefix_prompt = prefix_prompt)
     output_df = filter_tokenize_ground_truth(input_df = input_df)
 
     save_tokenized_dataset(root = '/home/al2644/research/datasets/NQ-swap/tokenized_ground_truth_df', suffix='tokenized',
